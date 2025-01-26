@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is visible.
+  </div>
+
+  <script>
+    // Incorrectly using innerHTML to add more elements to the div
+    document.getElementById("myDiv").innerHTML += "<p>This paragraph is also visible.</p><p>This one too.</p>";
+    //The issue is that subsequent calls to innerHTML will overwrite the previous ones.
+    //Instead of appending to the existing content, innerHTML replaces the content entirely with each call.
+    document.getElementById("myDiv").innerHTML = "<p>This paragraph will replace the others</p>";
+  </script>
+</body>
+</html>
